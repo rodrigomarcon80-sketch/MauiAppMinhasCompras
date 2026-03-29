@@ -1,53 +1,23 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MauiAppMinhasCompras.Views.ListaProduto"
-             Title="Lista de Compras">
-
+             x:Class="MauiAppMinhasCompras.Views.NovoProduto"
+             Title="NovoProduto">
+    
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Somar" Clicked="ToolbarItem_Clicked_1" />
-        <ToolbarItem Text="Adicionar" Clicked="ToolbarItem_Clicked" />
+        <ToolbarItem Text="Salvar" Clicked="ToolbarItem_Clicked" />
     </ContentPage.ToolbarItems>
+    
+    <VerticalStackLayout Spacing="10" Padding="10">
+        <Label Text="Descrição do Produto:" />
+        
+        <Entry x:Name="txt_descricao" />
 
-    <VerticalStackLayout Spacing="5" Padding="10">
+        <Label Text="Quantidade:" />
+        <Entry x:Name="txt_quantidade" Keyboard="Numeric" />
 
-        <SearchBar x:Name="txt_search" 
-                   Placeholder="Busca de Produtos"
-                   TextChanged="txt_search_TextChanged" />
-
-        <ListView x:Name="lst_produtos" HasUnevenRows="True" SeparatorVisibility="Default">
-
-            <ListView.Header>
-                <Grid ColumnDefinitions="30, *, 60, 40, 70" Padding="5" BackgroundColor="#E1E1E1">
-                    <Label Grid.Column="0" Text="ID" FontAttributes="Bold" VerticalTextAlignment="Center" />
-                    <Label Grid.Column="1" Text="Descrição" FontAttributes="Bold" VerticalTextAlignment="Center" />
-                    <Label Grid.Column="2" Text="Preço" FontAttributes="Bold" VerticalTextAlignment="Center" />
-                    <Label Grid.Column="3" Text="Qnt" FontAttributes="Bold" VerticalTextAlignment="Center" />
-                    <Label Grid.Column="4" Text="Total" FontAttributes="Bold" VerticalTextAlignment="Center" />
-                </Grid>
-            </ListView.Header>
-
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <ViewCell.ContextActions>
-                            <MenuItem Text="Remover" 
-                                      Clicked="MenuItem_Clicked" 
-                                      IsDestructive="True" 
-                                      CommandParameter="{Binding .}" />
-                        </ViewCell.ContextActions>
-
-                        <Grid ColumnDefinitions="30, *, 60, 40, 70" Padding="5">
-                            <Label Grid.Column="0" Text="{Binding Id}" VerticalTextAlignment="Center" />
-                            <Label Grid.Column="1" Text="{Binding Descricao}" VerticalTextAlignment="Center" />
-                            <Label Grid.Column="2" Text="{Binding Preco, StringFormat='{0:F2}'}" VerticalTextAlignment="Center" />
-                            <Label Grid.Column="3" Text="{Binding Quantidade}" VerticalTextAlignment="Center" />
-                            <Label Grid.Column="4" Text="{Binding Total, StringFormat='{0:F2}'}" VerticalTextAlignment="Center" FontAttributes="Bold" />
-                        </Grid>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-
-        </ListView>
+        <Label Text="Preço Unitário:" />
+        <Entry x:Name="txt_preco" Keyboard="Numeric" />
     </VerticalStackLayout>
 </ContentPage>
+    
